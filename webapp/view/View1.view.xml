@@ -8,10 +8,13 @@
     <Page id="page" title="{oModel>/title}">
         <content>
             <!-- Context Binding -->
-            <Input binding="{oModel>/datas2}" value="{oModel>name}"/>
+            <Input  id="InputId"
+                    binding="{oModel>/datas2}" value="{oModel>name}"
+                    submit="OnInputSubmit"/>
             
             <!-- Aggresgation Binding -->
             <t:Table
+                id = "Table1"
 				rows="{
                     path : 'oModel>/datas'
                 }" 

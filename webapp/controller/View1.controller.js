@@ -1,11 +1,12 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
-    "sap/ui/model/json/JSONModel"
+    "sap/ui/model/json/JSONModel",
+    "sap/ui/model/Filter"
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller, JSONModel) {
+    function (Controller, JSONModel, Filter) {
         "use strict";
 
         return Controller.extend("test.test1.controller.View1", {
@@ -28,6 +29,12 @@ sap.ui.define([
                 this.getView().setModel( oModel, "oModel");
 
 
+            },
+            OnInputSubmit : function( oEvent ){
+                let oInput = this.byId("InputId").getValue();
+                let oFilter = new Filter("name", "EQ", oInput);
+
+                this.byId("Table1").getBinding("rows").filter( oFilter );
             }
         });
     });
